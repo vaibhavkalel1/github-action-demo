@@ -26,8 +26,14 @@ jobs:
       - name: Terraform Plan
         run: terraform plan
 
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
+      # - name: Terraform Apply
+      #   run: terraform apply -auto-approve
 
-      - name: Terraform destroy 
-        run: terraform destroy -auto-approve
+      # - name: Terraform destroy 
+      #   run: terraform destroy -auto-approve
+
+      - name: Import Existing EC2 Instance
+        run: terraform import aws_instance.existing $INSTANCE_ID
+
+      - name: Destroy EC2 Instance
+        run: terraform destroy -target=aws_instance.existing -auto-approve
