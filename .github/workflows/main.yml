@@ -30,6 +30,15 @@ jobs:
       # - name: Terraform Apply
       #   run: terraform apply -auto-approve
 
+      - name: Import AWS Resources
+        run: |
+          terraform import aws_instance.testec2 i-01073063b997164d3
+          terraform import aws_vpc.testvpc vpc-0feb3b054a4f4645a
+          terraform import aws_subnet.testsubnet subnet-0b97233f36772c944
+          terraform import aws_security_group.testsg sg-04e7e349be66616b6
+          terraform import aws_internet_gateway.testigw igw-0fabd30622d451d86
+          terraform import aws_route_table.testrt rtb-0df68cf8a723f1bf8
+
       - name: Terraform destroy 
         run: terraform destroy -auto-approve
 
