@@ -34,7 +34,7 @@ jobs:
       #   run: terraform destroy -auto-approve
 
       - name: Import Existing EC2 Instance
-        run: terraform import aws_instance.existing $INSTANCE_ID
+        run: terraform import aws_instance.example $INSTANCE_ID
 
       - name: Destroy EC2 Instance
-        run: terraform destroy -target=aws_instance.existing -auto-approve
+        run: terraform destroy -target=aws_instance.example -auto-approve
